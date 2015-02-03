@@ -1,1 +1,7 @@
-HERE ARE MY Squirrels
+<% @squirrels.each do |squirrel| %>
+  <div class="squirrel">
+    <h3> <%= squirrel.name %> </h3>
+    <div> edit   </div>
+    <div> delete </div>
+  <div>
+<%end%>

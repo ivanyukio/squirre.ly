@@ -1,1 +1,10 @@
-Here is a singular squirrel
+<form class='squirrels' action="/squirrels/<%= @squirrel.id %>" method='POST'>
+  <input type="hidden" name="_method" value="PUT">
+  <label>Name</label>
+  <input type='text'name="squirrel[name]" value=<%= @squirrel.name %> />
+  <label>Tree Mail</label>
+  <input type='text'name="squirrel[tree_mail]" value=<%= @squirrel.tree_mail%> />
+  <label>Tail Length</label>
+  <input type='text' name="squirrel[tail_length]" value=<%= @squirrel.tail_length%> />
+  <input type='submit' value='update'>
+</form>

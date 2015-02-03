@@ -4,14 +4,22 @@ get '/squirrels' do
 end
 
 get '/squirrels/new' do
-puts params
- erb :edit_squirrels
+  erb :create_squirrels
 end 
 
 get '/squirrels/:id' do
   begin
-    @squirrels = Squirrel.find( params[:id] ) 
+    @squirrel = Squirrel.find( params[:id] ) 
     erb :show_squirrel
+  rescue
+    404
+  end
+end
+
+put '/squirrels/:id' do
+  begin
+    Squirrel.find(params[:id]).update_attributes(params[:squirrel])
+    redirect "/squirrels/#{params[:id]}"
   rescue
     404
   end
