@@ -29,3 +29,11 @@ post '/squirrels/create' do
   new_squirrel = Squirrel.create(params[:squirrel])
   redirect "/squirrels/#{new_squirrel.id}"
 end
+
+delete '/squirrels/:id' do
+  begin
+    Squirrel.find(params[:id]).destroy
+    redirect "/squirrels"
+  rescue
+  end
+end

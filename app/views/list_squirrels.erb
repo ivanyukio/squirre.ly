@@ -1,7 +1,9 @@
 <% @squirrels.each do |squirrel| %>
   <div class="squirrel">
     <h3> <%= squirrel.name %> </h3>
-    <div> edit   </div>
-    <div> delete </div>
+    <form action='/squirrels/<%= squirrel.id %>' method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="delete"/>
+    </form>
   <div>
 <%end%>
