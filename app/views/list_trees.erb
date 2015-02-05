@@ -1,0 +1,9 @@
+<div class="squirrel">
+  <h3> <%= @squirrel.name %> </h3>
+  <ul>
+    <% @squirrel.trees.each do |tree| %>
+      <li> <%= tree.name %> | <%= tree.layout %> </li>
+    <% end %>  
+  </ul>
+</div>
+
