@@ -1,0 +1,16 @@
+<div>
+  <%= @error %>
+  <form action="/authenticate/user" method="post">
+    <div>
+      <label>username:</label>
+      <input type='text' name='name' />
+    </div>
+    <div>
+      <label>password:</label>
+      <input type="password" name="password" />
+    </div>
+    <div>
+      <input type='submit' value='login'/>
+    </div>
+  </form>
+</div>
