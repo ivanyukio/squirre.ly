@@ -1,3 +1,4 @@
 class Branch < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :squirrel
+  belongs_to :tree
 end
