@@ -1,0 +1,10 @@
+<div class="squirrel">
+  <h3> <%= @squirrel.name %> </h3>
+  <ul>
+    <% @squirrel.nuts.each do |nut| %>
+      <li> <%= nut.flavor %> </li>
+    <% end %>  
+  </ul>
+</div>
+
+

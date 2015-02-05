@@ -3,7 +3,9 @@
     <h3> <%= squirrel.name %> </h3>
     <form action='/squirrels/<%= squirrel.id %>' method="POST">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="delete"/>
+      <input class='btn' type="submit" value="delete"/>
+      <a href='/squirrels/<%= squirrel.id %>/nuts'>view nuts</a>
+      <a href='/squirrels/<%= squirrel.id %>/trees'>view trees</a>
     </form>
   <div>
 <%end%>
