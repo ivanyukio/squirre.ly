@@ -1,7 +1,27 @@
 <div class='list-content'>
   <% @squirrels.each do |squirrel| %>
     <div class="squirrel">
-      <h3> <%= squirrel.name %> </h3>
+      <div class='name'>
+        <%= squirrel.name %> 
+      </div>
+      <div class='counts'>
+        <div> 
+          <div class='headers'>
+            <label class='count'>Nuts</label>
+          </div>
+          <div class='headers'>
+            <label class='count'>Trees</label>
+          </div>
+        </div>
+        <div> 
+          <div class='values'>
+            <%= squirrel.nut_count %>
+          </div>
+          <div class='values'>
+            <%= squirrel.tree_count %>
+          </div>
+        </div>
+      </div>
       <div class='actions'>
         <form action='/squirrels/<%= squirrel.id %>' method="POST">
           <input type="hidden" name="_method" value="DELETE"/>
