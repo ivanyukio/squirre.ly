@@ -14,11 +14,11 @@
   <title>Squirre.ly</title>
 </head>
 <body>
-<div id="content">
   <header>
     <%= erb :_header, :layout => false %>
   </header>
-  <%= yield %>
-</div>
+  <div id="content">
+    <%= yield %>
+  </div>
 </body>
 </html>

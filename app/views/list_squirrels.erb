@@ -1,11 +1,21 @@
-<% @squirrels.each do |squirrel| %>
-  <div class="squirrel">
-    <h3> <%= squirrel.name %> </h3>
-    <form action='/squirrels/<%= squirrel.id %>' method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input class='btn' type="submit" value="delete"/>
-      <a href='/squirrels/<%= squirrel.id %>/nuts'>view nuts</a>
-      <a href='/squirrels/<%= squirrel.id %>/trees'>view trees</a>
-    </form>
-  <div>
-<%end%>
+<div class='list-content'>
+  <% @squirrels.each do |squirrel| %>
+    <div class="squirrel">
+      <h3> <%= squirrel.name %> </h3>
+      <div class='actions'>
+        <form action='/squirrels/<%= squirrel.id %>' method="POST">
+          <input type="hidden" name="_method" value="DELETE"/>
+          <div class='btn-container'>
+            <a  class='btn' href='/squirrels/<%= squirrel.id %>/nuts'>nuts</a>
+          </div>
+          <div class='btn-container'>
+            <a  class='btn' href='/squirrels/<%= squirrel.id %>/trees'>trees</a>
+          </div>
+          <div class='btn-container'>
+            <input class='btn' type="submit" value="delete"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  <%end%>
+ </div>
