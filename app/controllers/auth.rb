@@ -4,20 +4,19 @@ get '/authenticate/login' do
 end
 
 get '/authenticate/signup' do
+  @error = "Something Went Wrong" if params[:error]
   erb :signup
 end
 
 post '/authenticate/register_user' do
   user = User.new(params)
-  user.password = params[:password]
-  user.save!
-  redirect '/'
+  redirect '/' if user.save!
+  redirect '/authenticate/signup?error=true'
 end
 
 post '/authenticate/user' do
   user = User.find_by_name(params[:name])
-  
-  if user && user.password == params[:password]
+  if user && user.authenticate(params[:password])
    session[:user_id] = user.id
    redirect '/'
   else
@@ -25,7 +24,7 @@ post '/authenticate/user' do
   end
 end
 
-post 'authenticate/logout' do
+post '/authenticate/logout' do
   session[:user_id] = nil;
   redirect '/'
 end
