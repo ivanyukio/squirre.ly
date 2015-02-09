@@ -18,6 +18,9 @@
     <%= erb :_header, :layout => false %>
   </header>
   <div id="content">
+    <% if current_user %>
+      <%= erb :_navigation, :layout => false %>
+    <% end %>
     <%= yield %>
   </div>
 </body>
