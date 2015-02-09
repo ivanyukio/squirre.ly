@@ -1,15 +1,17 @@
 <div class='login-form'>
-  <form action="/authenticate/user" method="post">
-    <div>
-      <label>username:</label>
-      <input type='text' name='name' />
-    </div>
-    <div>
-      <label>password:</label>
-      <input type="password" name="password" />
-    </div>
-    <div>
-      <input type='submit' value='login'/>
-    </div>
-  </form>
+  <div class='form-content'>
+    <form action="/authenticate/user" method="post">
+      <div class='hr-input-field'>
+        <label>username</label>
+        <input type='text' name='name' />
+      </div>
+      <div class='hr-input-field'>
+        <label>password</label>
+        <input type="password" name="password" />
+      </div>
+      <div class='actions'>
+        <input class='btn' type='submit' value='login'/>
+      </div>
+    </form>
+  </div>
 </div>

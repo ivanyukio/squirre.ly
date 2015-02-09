@@ -17,7 +17,37 @@ li{ list-style: none;}
 }
 
 .login-form{
-  
+  width: 70%;
+  text-align: center;
+  margin: 0px auto;
+  background-color: #FFFCFD;
+}
+
+.form-content{
+  float:left;
+  display: block;
+  width: 100%;
+  background-color: #FFFCFD;
+}
+
+.hr-input-field{
+  width: 100%;
+  display: block;
+  float: left;
+  padding-bottom: 5px;
+}
+
+.hr-input-field > label {  
+  width: 100%;
+  display: block;
+  float: left;
+}
+.hr-input-field > input{
+  float: left;
+  display: block;
+  margin-left: 33%;
+  width: 33%;
+  border: 1px solid;
 }
 
 .header{
@@ -90,12 +120,12 @@ li > .option:hover {
   display: block;
 }
 
-.squirrel>.actions{
+.actions{
   display:block;
   float:left;
   background-color: #DE4A14;
   width: 100%;
-  height: 20px;
+  height: 25px;
   text-align: center;
   border-bottom: 2px solid #000;
 }
@@ -108,17 +138,19 @@ li > .option:hover {
   
 }
 
-.btn-container>.btn{
+.btn{
   background-color: #DE4A14;
   border: 0px;
   color: #000;
   text-decoration: none;
-  height: 15px;
+  height: 100%;
   font-weight: 500;
+  width: 100%;
+  padding-top: 5px;
 }
 
 
-.btn-container>.btn:hover {
+.btn:hover {
  color: #FFFCFD;
 }
   
