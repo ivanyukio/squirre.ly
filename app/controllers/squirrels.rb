@@ -35,5 +35,6 @@ delete '/squirrels/:id' do
     Squirrel.find(params[:id]).destroy
     redirect "/squirrels"
   rescue
+    500
   end
 end
