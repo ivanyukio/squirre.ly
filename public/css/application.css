@@ -1,18 +1,30 @@
 body{background-color: #B04329;}
+ol{ padding 100px;}
+ul{ padding: 0px; margin: 0px; }
+li{ list-style: none;}
+
 #content{  
   margin: 0 auto;
   text-align: left;
   width: 70%;
 }
-ol{ padding 100px;}
-ul{ padding: 0px; margin: 0px; }
-li{ list-style: none;}
+
+#error{
+  background-color: #DE4A14;
+  margin-top: 10px;
+  padding: 5px;
+  color: #C4C7A8;
+}
+
+.login-form{
+  
+}
 
 .header{
     background-color: #C4C7A8;
     text-align: center;
     border-bottom: 5px solid #A69F67;
-    padding: 10px;
+    padding: 10px 0px 0px 0px;
     margin-bottom: 5px;
 }
 
@@ -25,7 +37,7 @@ li{ list-style: none;}
 
 .options{text-align: center;}
 
-li .option:hover {
+li > .option:hover {
   background-color: #A69F67;    
 }
 
