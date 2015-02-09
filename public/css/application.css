@@ -16,6 +16,9 @@ li{ list-style: none;}
   color: #C4C7A8;
 }
 
+#navigation{
+  padding-left: 55px;
+}
 .login-form{
   width: 70%;
   text-align: center;
@@ -80,6 +83,17 @@ li > .option:hover {
 
 }
 .option>a:hover { color: #000000; }
+
+.option.logout{
+  width: 25%;
+  float: right;
+  text-align: right;
+}
+
+.option.page-nav{
+  width: 75%;
+  float: left;
+}
 
 .list-content{
   float: left;
