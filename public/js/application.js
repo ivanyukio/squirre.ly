@@ -3,14 +3,10 @@ $(document).ready(function() {
   $('.header .text').on('click', function(){
     window.location.replace("/");
   });
+  
+  if( $('#navigation').length ){
+    navigation.init();
+  }
 
-  $('.option.logout').on('click', function(){
-    $.ajax({
-      type: 'get',
-      url: '/authenticate/logout',
-      success: function(){
-        window.location.replace("/");
-    }});
-  });
 });
 

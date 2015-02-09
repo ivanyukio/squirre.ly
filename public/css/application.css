@@ -19,6 +19,7 @@ li{ list-style: none;}
 #navigation{
   padding-left: 55px;
 }
+
 .login-form{
   width: 70%;
   text-align: center;
@@ -149,7 +150,6 @@ li > .option:hover {
   float: left;
   width: 33%;
   line-height: 1.4em;
-  
 }
 
 .btn, a.btn{
@@ -161,7 +161,6 @@ li > .option:hover {
   font-weight: 500;
   width: 100%;
 }
-
 
 .btn:hover, a.btn:hover {
  color: #FFFCFD;
