@@ -24,9 +24,9 @@ post '/authenticate/user' do
   end
 end
 
-post '/authenticate/logout' do
+get '/authenticate/logout' do
   session[:user_id] = nil;
-  redirect '/'
+  200
 end
 
 
