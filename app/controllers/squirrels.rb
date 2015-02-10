@@ -1,3 +1,9 @@
+require 'json' 
+get '/squirrels.json' do 
+ squirrels = Squirrel.all
+ content_type :json
+end
+
 get '/squirrels' do
   @squirrels = Squirrel.all
   erb :list_squirrels
