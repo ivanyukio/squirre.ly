@@ -10,8 +10,31 @@ function Squirrel(params) {
 
 }
 
-Squirrel.prototype.toJson = function(){
-  return JSON.stringify( {name: this.name, tailLength: this.tailLength, treeMail: this.treeMail} );
+Squirrel.all = function(){ 
+  $.ajax({
+    type    : "get",
+    url     : "/squirrels.json",
+    success : function(response){
+      var squirrels = [];
+      $.each(response, function(x,item){   
+        squirrels.push( new Squirrel( item ));
+      }); 
+      console.log(squirrels);
+    },
+    error   : function(){ console.log("something went wrong in all");}
+  });
+};
+
+Squirrel.find = function(id){
+  $.ajax({
+    type    : 'get',
+    url     : "/squirrels/"+ id + '/show.json',
+    success : function(response){ 
+     var squirrel = new Squirrel( response ); 
+     console.log( squirrel );
+    },
+    error   : function(){ console.log('something went wrong in save');} 
+  });
 };
 
 Squirrel.prototype.save = function(){
@@ -22,24 +45,18 @@ Squirrel.prototype.save = function(){
                   tail_length: this.tailLength, 
                   tree_mail:   this.treeMail },
       success : function(){ console.log('updated'); },
-      error   : function(){ console.log('something went wrong');} 
+      error   : function(){ console.log('something went wrong in save');} 
     });
 };
 
+Squirrel.prototype.destroy = function(){
+  $.ajax({
+    type    : 'delete',
+    url     : '/squirrels/' + this.id + '/destroy.json',
+    success : function(){ console.log('deleted'); },
+    error   : function(){  console.log('delete went bad'); }
+  });
+};
 
-Squirrel.all = function( then, fail  ){
-    $.ajax({
-      type    : "get",
-      url     : "/squirrels.json",
-      success : function(response){
-        
-        var squirrels = [];
-        $.each(response, function(x,item){   
-          squirrels.push( new Squirrel( item ));
-        }); 
 
-        then(squirrels);
-      },
-      error   : function(){ console.log("something went wrong");}
-    });
-}
+

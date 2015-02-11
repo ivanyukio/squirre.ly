@@ -6,5 +6,4 @@ var squirrelController = function(){
        squirrelList = squirrels;
      });
   
-   //html content editble / contentInput event wireup  
 }();
