@@ -19,12 +19,8 @@ get '/squirrels/:id' do
 end
 
 put '/squirrels/:id' do
-  begin
     Squirrel.find(params[:id]).update_attributes(params[:squirrel])
     redirect "/squirrels/#{params[:id]}"
-  rescue
-    404
-  end
 end
 
 post '/squirrels/create' do
@@ -33,28 +29,32 @@ post '/squirrels/create' do
 end
 
 delete '/squirrels/:id' do
-  begin
-    Squirrel.find(params[:id]).destroy
-    redirect "/squirrels"
-  rescue
-    500
-  end
+  Squirrel.find(params[:id]).destroy
+  redirect "/squirrels"
 end
+
+################### AJAX Routes ######################### 
 
 get '/squirrels.json' do
   content_type :json
-  Squirrel.all.map{ |sqrl| { id: sqrl.id,
-                             name: sqrl.name, 
-                             tailLength: sqrl.tail_length, 
-                             treeMail: sqrl.tree_mail,
-                             trees: sqrl.tree_count,
-                             nuts:  sqrl.nut_count  } }.to_json
+  Squirrel.all.map{ |sqrl| sqrl.to_hash }.to_json
+end
+
+get '/squirrels/:id/show.json' do
+ content_type :json
+ Squirrel.find(params[:id]).to_hash.to_json 
 end
 
 put '/squirrels/:id/update.json' do
-    params.delete "splat"
-    params.delete "captures"
-    Squirrel.find(params[:id]).update_attributes(params)
-    redirect "/squirrels/#{params[:id]}"
+  params.delete "splat"
+  params.delete "captures"
+  Squirrel.find(params[:id]).update_attributes(params)
+  redirect "/squirrels/#{params[:id]}"
+end
+
+delete '/squirrels/:id/destroy.json' do
+ content_type :json
+ Squirrel.find(params[:id]).destroy
+ redirect "/squirrels" 
 end
 
