@@ -43,9 +43,18 @@ end
 
 get '/squirrels.json' do
   content_type :json
-  Squirrel.all.map{ |sqrl| { name: sqrl.name, 
+  Squirrel.all.map{ |sqrl| { id: sqrl.id,
+                             name: sqrl.name, 
                              tailLength: sqrl.tail_length, 
                              treeMail: sqrl.tree_mail,
                              trees: sqrl.tree_count,
                              nuts:  sqrl.nut_count  } }.to_json
 end
+
+put '/squirrels/:id/update.json' do
+    params.delete "splat"
+    params.delete "captures"
+    Squirrel.find(params[:id]).update_attributes(params)
+    redirect "/squirrels/#{params[:id]}"
+end
+
