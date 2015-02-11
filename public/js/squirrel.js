@@ -10,18 +10,6 @@ function Squirrel(params) {
 
 }
 
-Squirrel.prototype.update = function(){
-  
-  $.ajax({
-    type    : 'put',
-    url     : "/squirrels/"+ this.id  +"/update.json",
-    data    : {name: this.name, tail_length: this.tailLength, tree_mail: this.treeMail},
-    success : function(){ console.log('updated'); },
-    error   : function(){ console.log('something went wrong');} 
-  });
-
-};
-
 Squirrel.prototype.toJson = function(){
   return JSON.stringify( {name: this.name, tailLength: this.tailLength, treeMail: this.treeMail} );
 };
