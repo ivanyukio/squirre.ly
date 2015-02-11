@@ -19,4 +19,14 @@ class Squirrel < ActiveRecord::Base
       trees:      self.tree_count,
       nuts:       self.nut_count  }
   end
+
+  def self.create_or_update(params)
+    squirrel = Squirrel.find_by(id: params[:id])
+    if squirrel 
+      squirrel.update_attributes(params)
+    else
+      squirrel = Squirrel.create(params)
+    end
+    squirrel
+  end
 end
