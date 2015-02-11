@@ -45,6 +45,12 @@ get '/squirrels/:id/show.json' do
  Squirrel.find(params[:id]).to_hash.to_json 
 end
 
+post '/squirrels/create.json' do
+  content_type :json
+  squirrel = Squirrel.create( params )
+  squirrel.to_hash.to_json
+end
+
 put '/squirrels/:id/update.json' do
   params.delete "splat"
   params.delete "captures"

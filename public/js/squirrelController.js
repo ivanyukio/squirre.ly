@@ -19,13 +19,19 @@ var squirrelController = function(){
     });  
   }
 
-  var createSquirrel = function( params ){
+  var updateSquirrel = function( squirrel ){
     squirrel = new Squirrel(param);
     squirrel.save(function(id){
       squirrel.id = id;    
       console.log(squirrel);
     });
   }
+
+  var createSquirrel = function( params ){
+    Squirrel.create( params, function(squirrel){
+      console.log(squirrel); 
+    });
+  };
   
   return{
     index:    getSquirrels,

@@ -38,6 +38,19 @@ Squirrel.find = function(id, then){
   });
 };
 
+Squirrel.create = function( params, then ){
+  $.ajax({
+    type    : 'post',
+    url     : '/squirrels/create.json',
+    data    : params,
+    success : function( response ){
+      var squirrel = new Squirrel( response );
+      then( squirrel);
+    },
+    error   : function(){ console.log('something wen wrong in create');}
+  });
+};
+
 Squirrel.prototype.save = function(then){
     $.ajax({
       type    : 'put',
@@ -46,7 +59,8 @@ Squirrel.prototype.save = function(then){
                   tail_length: this.tailLength, 
                   tree_mail:   this.treeMail },
       success : function( response ){ 
-                  then( response.id) 
+                  var squirrel = new Squirrel( response );
+                  then( squirrel );
                  },
       error   : function(){ console.log('something went wrong in save');} 
     });
