@@ -10,4 +10,13 @@ class Squirrel < ActiveRecord::Base
   def tree_count
     trees.length
   end
+
+  def to_hash
+    { id:         self.id,
+      name:       self.name, 
+      tailLength: self.tail_length, 
+      treeMail:   self.tree_mail,
+      trees:      self.tree_count,
+      nuts:       self.nut_count  }
+  end
 end
