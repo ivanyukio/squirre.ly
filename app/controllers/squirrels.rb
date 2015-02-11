@@ -1,3 +1,5 @@
+require 'json'
+
 get '/squirrels' do
   @squirrels = Squirrel.all
   erb :list_squirrels
@@ -37,4 +39,13 @@ delete '/squirrels/:id' do
   rescue
     500
   end
+end
+
+get '/squirrels.json' do
+  content_type :json
+  Squirrel.all.map{ |sqrl| { name: sqrl.name, 
+                             tailLength: sqrl.tail_length, 
+                             treeMail: sqrl.tree_mail,
+                             trees: sqrl.tree_count,
+                             nuts:  sqrl.nut_count  } }.to_json
 end
