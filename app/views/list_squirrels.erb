@@ -1,40 +1,23 @@
 <div class='list-content'>
   <% @squirrels.each do |squirrel| %>
-    <div class="squirrel">
+    <div class="squirrel" data-squirrel-id="7">
       <div class='name'>
         <%= squirrel.name %> 
       </div>
       <div class='counts'>
-        <div> 
-          <div class='headers'>
-            <label class='count'>Nuts</label>
-          </div>
-          <div class='headers'>
-            <label class='count'>Trees</label>
-          </div>
+        <div class='item'>
+          <label>Nuts:</label>
+          <span class='value'>  <%= squirrel.nut_count %></span>
         </div>
-        <div> 
-          <div class='values'>
-            <%= squirrel.nut_count %>
-          </div>
-          <div class='values'>
-            <%= squirrel.tree_count %>
-          </div>
+        <div class='item'>
+          <label>Trees:</label>
+          <span class='value'><%= squirrel.tree_count %></span>
         </div>
       </div>
       <div class='actions'>
-        <form action='/squirrels/<%= squirrel.id %>' method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <div class='btn-container'>
-            <a  class='btn' href='/squirrels/<%= squirrel.id %>/nuts'>nuts</a>
-          </div>
-          <div class='btn-container'>
-            <a  class='btn' href='/squirrels/<%= squirrel.id %>/trees'>trees</a>
-          </div>
-          <div class='btn-container'>
-            <input class='btn' type="submit" value="delete"/>
-          </div>
-        </form>
+        <a class='btn' href='/squirrels/<%= squirrel.id %>/nuts'>nuts</a>
+        <a class='btn' href='/squirrels/<%= squirrel.id %>/trees'>trees</a>
+        <a id='delete' class='btn' href='#'>delete</a>
       </div>
     </div>
   <%end%>
