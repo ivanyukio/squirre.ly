@@ -1,7 +1,6 @@
 require 'json'
 
 get '/squirrels' do
-  @squirrels = Squirrel.all
   erb :list_squirrels
 end
 
