@@ -7,12 +7,12 @@ squirrelsIndex = function(){
       "</div>" +
       "<div class='counts'>" +
         "<div class='item'>" +
-          "<label>Nuts:</label>" +
-          "<span class='value'>{nut_count}</span>" +
+          "<label>Nuts: </label>" +
+          "<span class='value'>{nutCount}</span>" +
         "</div>" +
         "<div class='item'>" +
-          "<label>Trees:</label>" +
-          "<span class='value'>{tree_count}</span>" +
+          "<label>Trees: </label>" +
+          "<span class='value'>{treeCount}</span>" +
         "</div>" +
       "</div>" +
       "<div class='actions'>" +
@@ -22,5 +22,18 @@ squirrelsIndex = function(){
       "</div>" +
     "</div> ";
 
-    return{ html: html}
+    var addSquirrel = function( squirrel ){
+      html = html.replace(/{id}/g, squirrel.id);     
+      html = html.replace(/{name}/g, squirrel.name);     
+      html = html.replace(/{nutCount}/g, squirrel.nutCount);     
+      html = html.replace(/{treeCount}/g, squirrel.treeCount);     
+      
+      $('.list-content').append( html );
+    };
+
+
+    return{ html         : html,
+            addSquirrel  : addSquirrel
+          }
+    
 }();
