@@ -9,6 +9,10 @@ $(document).ready(function() {
   if( $('#navigation').length ){
     navigation.init();
   }
+  
+  if( $('.list-content').length ){
+    squirrelController.index(); 
+  }
 });
 
 
