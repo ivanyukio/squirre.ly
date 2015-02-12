@@ -41,15 +41,26 @@ squirrelsIndex = function(){
     };
 
     var wireEvents = function(){
+         
       $('.btn.delete').on('click', function(){
         $sqrl = $(this).closest('div.squirrel'); 
         $data = $sqrl.data();
         squirrelController.destroy( $data.id );
       });
+   
     };
     
+    document.addEventListener('getSquirrelsCompleted',function(e){
+      addSquirrels(e.detail.sqrls);
+      $('.btn.delete').on('click', function(){
+        $sqrl = $(this).closest('div.squirrel'); 
+        $data = $sqrl.data();
+        squirrelController.destroy( $data.id );
+      });
+    }, false);
+
+
     return{ html           : html,
-            addSquirrel    : addSquirrel,
             addSquirrels   : addSquirrels,
             removeSquirrel : removeSquirrel,
             wireEvents     : wireEvents

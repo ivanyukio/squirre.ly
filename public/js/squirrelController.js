@@ -4,8 +4,9 @@ var squirrelController = function(){
   var getSquirrels = function(){
     Squirrel.all(function(squirrels){
       squirrelCache = squirrels;
-      squirrelsIndex.addSquirrels( squirrels );
-      squirrelsIndex.wireEvents();
+      var evnt = new CustomEvent( 'getSquirrelsCompleted', 
+                              {detail: {sqrls: squirrelCache}});
+      document.dispatchEvent(evnt); 
     });
   };
 
@@ -36,7 +37,7 @@ var squirrelController = function(){
       console.log(squirrel); 
     });
   };
-  
+
   return{
     index:    getSquirrels,
     show:     getSquirrel,
