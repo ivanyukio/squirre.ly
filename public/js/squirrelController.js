@@ -1,8 +1,11 @@
 var squirrelController = function(){
+  var squirrelCache;
 
   var getSquirrels = function(){
     Squirrel.all(function(squirrels){
+      squirrelCache = squirrels;
       squirrelsIndex.addSquirrels( squirrels );
+      squirrelsIndex.wireEvents();
     });
   };
 
@@ -13,9 +16,10 @@ var squirrelController = function(){
     });
   };
 
-  var deleteSquirrel = function( squirrel ){
-    squirrel.destroy(function(){
-      console.log(squirrel.name + ": Deleted");
+  var deleteSquirrel = function( id ){
+    sqrl = $.grep(squirrelCache, function(e){ return e.id == id; })[0];
+    sqrl.destroy(function(){
+      squirrelsIndex.removeSquirrel(sqrl.id);     
     });  
   }
 

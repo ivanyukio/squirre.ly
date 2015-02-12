@@ -1,7 +1,7 @@
 squirrelsIndex = function(){
 
   var html = "" +
-    "<div class='squirrel' data-squirrel-id='{id}'>" +
+    "<div class='squirrel {id}' data-id='{id}'>" +
      "<div class='name'>" +
         "{name} " +
       "</div>" +
@@ -18,7 +18,7 @@ squirrelsIndex = function(){
       "<div class='actions'>" +
         "<a class='btn' href='/squirrels/{id}/nuts'>nuts</a>" +
         "<a class='btn' href='/squirrels/{id}/trees'>trees</a>" +
-        "<a id='delete' class='btn' href='#'>delete</a>" +
+        "<a id='delete' class='btn delete' href='#'>delete</a>" +
       "</div>" +
     "</div> ";
 
@@ -36,9 +36,23 @@ squirrelsIndex = function(){
       });
     };
 
-    return{ html         : html,
-            addSquirrel  : addSquirrel,
-            addSquirrels : addSquirrels
+    var removeSquirrel = function( id ){
+      $('div.squirrel.' + id).remove(); 
+    };
+
+    var wireEvents = function(){
+      $('.btn.delete').on('click', function(){
+        $sqrl = $(this).closest('div.squirrel'); 
+        $data = $sqrl.data();
+        squirrelController.destroy( $data.id );
+      });
+    };
+    
+    return{ html           : html,
+            addSquirrel    : addSquirrel,
+            addSquirrels   : addSquirrels,
+            removeSquirrel : removeSquirrel,
+            wireEvents     : wireEvents
           }
     
 }();
