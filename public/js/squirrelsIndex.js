@@ -31,9 +31,15 @@ squirrelsIndex = function(){
       $('.list-content').append( html );
     };
 
+    var addSquirrels = function( squirrels ){
+      $.each(squirrels, function(x,item){
+        addSquirrel( item );  
+      });
+    };
 
     return{ html         : html,
-            addSquirrel  : addSquirrel
+            addSquirrel  : addSquirrel,
+            addSquirrels : addSquirrels
           }
     
 }();
