@@ -23,12 +23,11 @@ squirrelsIndex = function(){
     "</div> ";
 
     var addSquirrel = function( squirrel ){
-      html = html.replace(/{id}/g, squirrel.id);     
-      html = html.replace(/{name}/g, squirrel.name);     
-      html = html.replace(/{nutCount}/g, squirrel.nutCount);     
-      html = html.replace(/{treeCount}/g, squirrel.treeCount);     
-      
-      $('.list-content').append( html );
+      var htmlToAdd = html.replace(/{id}/g, squirrel.id);     
+      htmlToAdd = htmlToAdd.replace(/{name}/g, squirrel.name);     
+      htmlToAdd = htmlToAdd.replace(/{nutCount}/g, squirrel.nutCount);     
+      htmlToAdd = htmlToAdd.replace(/{treeCount}/g, squirrel.treeCount);     
+      $('.list-content').append( htmlToAdd );
     };
 
     var addSquirrels = function( squirrels ){

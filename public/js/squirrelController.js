@@ -2,7 +2,7 @@ var squirrelController = function(){
 
   var getSquirrels = function(){
     Squirrel.all(function(squirrels){
-      console.log(squirrels);
+      squirrelsIndex.addSquirrels( squirrels );
     });
   };
 
