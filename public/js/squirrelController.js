@@ -20,7 +20,9 @@ var squirrelController = function(){
   var deleteSquirrel = function( id ){
     sqrl = $.grep(squirrelCache, function(e){ return e.id == id; })[0];
     sqrl.destroy(function(){
-      squirrelsIndex.removeSquirrel(sqrl.id);     
+      var evnt = new CustomEvent( 'deleteSquirrelCompleted',
+                                  {detail: {id: sqrl.id}});
+      document.dispatchEvent(evnt);
     });  
   }
 
@@ -37,6 +39,10 @@ var squirrelController = function(){
       console.log(squirrel); 
     });
   };
+
+  document.addEventListener('deleteSqrlClicked',function(e){
+    deleteSquirrel(e.detail.id); 
+  },false);
 
   return{
     index:    getSquirrels,

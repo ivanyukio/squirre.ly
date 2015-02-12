@@ -40,30 +40,26 @@ squirrelsIndex = function(){
       $('div.squirrel.' + id).remove(); 
     };
 
-    var wireEvents = function(){
-         
-      $('.btn.delete').on('click', function(){
-        $sqrl = $(this).closest('div.squirrel'); 
-        $data = $sqrl.data();
-        squirrelController.destroy( $data.id );
-      });
-   
-    };
-    
     document.addEventListener('getSquirrelsCompleted',function(e){
+      
       addSquirrels(e.detail.sqrls);
-      $('.btn.delete').on('click', function(){
+      
+      $('.btn.delete').on('click', function(e){
+        e.preventDefault();
         $sqrl = $(this).closest('div.squirrel'); 
         $data = $sqrl.data();
-        squirrelController.destroy( $data.id );
-      });
-    }, false);
+        var evnt = new CustomEvent( 'deleteSqrlClicked',
+                                    {detail: { id: $data.id }});
+        document.dispatchEvent(evnt)
+      ;});}, false);
 
+    document.addEventListener('deleteSquirrelCompleted',function(e){
+      removeSquirrel(e.detail.id);
+    });
 
     return{ html           : html,
             addSquirrels   : addSquirrels,
-            removeSquirrel : removeSquirrel,
-            wireEvents     : wireEvents
+            removeSquirrel : removeSquirrel
           }
     
 }();
