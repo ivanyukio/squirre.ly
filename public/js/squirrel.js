@@ -74,6 +74,3 @@ Squirrel.prototype.destroy = function(then){
     error   : function(){  console.log('delete went bad'); 
   }});
 };
-
-
-
